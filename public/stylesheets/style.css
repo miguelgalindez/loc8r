@@ -1,0 +1,6 @@
+span.badge.badge-warning{
+	margin-right: 5px;
+}
+.list-group-item > .firstDescription > * {
+	font-size: 2rem;
+}
