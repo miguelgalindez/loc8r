@@ -1,27 +1,23 @@
 extends layout
 
-block content
-	#banner.page-header
-		.row
-			.col-lg-6
-				h1 Loc8r
-				small &nbsp; Find places to work with wifi near you!
-	.row
+block content		
+	.row.pt-3
 		.col-xs-12.col-sm-8
-			.row.list-group
-				.col-xs-12.list-group-item
-					.row.firstDescription.justify-content-between
-						a.text-primary(href='/location') StarCups
-						.stars.text-primary
-							span.fa.fa-star
-							span.fa.fa-star
-							span.fa.fa-star
-							span.far.fa-star
-							span.far.fa-star
-						span.badge.badge-danger.float-right 100m
-					.row
-						p.address 125 High Street, Reading, RG6 1PS
-					.row
+			.list-group
+				a.list-group-item.list-group-item-action.flex-column.align-items-start(href='/location')
+					.d-flex.w-100.justify-content-between.align-items-center
+						.first-description
+							span.placeName StarCups
+							.stars.text-primary
+								span.fa.fa-star
+								span.fa.fa-star
+								span.fa.fa-star
+								span.far.fa-star
+								span.far.fa-star
+
+						span.badge.badge-danger 100m
+					p.mb-1.address 125 High Street, Reading, RG6 1PS
+					p.mb-1
 						span.badge.badge-warning Hot drinks
 						span.badge.badge-warning Food
 						span.badge.badge-warning Premium Wifi

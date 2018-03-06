@@ -1,6 +1,35 @@
 span.badge.badge-warning{
 	margin-right: 5px;
 }
-.list-group-item > .firstDescription > * {
+.first-description > * {
 	font-size: 2rem;
+	display: inline;	
+}
+
+.stars{
+	font-size: 1.5rem;
+	padding-left: 1rem;
+}
+
+body{
+	background-color: #008E95;
+	color: white; 
+}
+
+.navbar-red{
+	background-color: #BA002D !important;
+	color: white !important;	
+}
+
+.navbar-red * {
+	color: white !important;
+}
+
+.badge{
+	padding: 0.5rem;	
+}
+
+.badge.badge-danger{
+	font-size: 1rem;
+	border-radius: 20px;
 }
