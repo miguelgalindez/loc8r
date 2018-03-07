@@ -6,21 +6,14 @@ html
 		link(rel='stylesheet', href='/bootstrap/css/bootstrap.css')
 		link(rel='stylesheet', href='/stylesheets/footer.css')
 		link(rel='stylesheet', href='/stylesheets/style.css')
+		link(rel='stylesheet', href="https://fonts.googleapis.com/css?family=Lobster|Catamaran")
 	body
-		nav.navbar.navbar-expand-lg.sticky-top.navbar-red.bg-dark.justify-content-between
-			a.navbar-brand(href='/') Loc8r
-			button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNav')
-				span.navbar-toggler-icon
-			div#navbarNav.collapse.navbar-collapse.justify-content-end
-				ul.navbar-nav
-					li.nav-item.active
-						a.nav-link(href='/about') About					
+		nav.navbar.sticky-top.navbar-red.justify-content-center
+			a.navbar-brand.py-0(href='/') Loc8r
 		.container
 			block content
-		footer.footer
-			.container
-				.col-xs-12.text-center
-					small &copy; Simon Holmes 2014
+		footer.footer.text-center
+			a(href='/about') About us			
 		script(src='/javascripts/jquery-3.3.1.min.js')
 		script(src='/bootstrap/js/bootstrap.min.js')
 		script(defer src='https://use.fontawesome.com/releases/v5.0.8/js/all.js')

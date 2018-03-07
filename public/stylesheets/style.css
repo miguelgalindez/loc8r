@@ -1,19 +1,35 @@
-span.badge.badge-warning{
-	margin-right: 5px;
+body{
+	font-family: Catamaran;
+	font-weight: bold;
+	background-color: #008E95;
+	color: white; 
 }
-.first-description > * {
-	font-size: 2rem;
+
+span.badge.badge-facility{
+	margin-right: 5px;	
+}
+.first-description * {	
 	display: inline;	
 }
 
-.stars{
-	font-size: 1.5rem;
-	padding-left: 1rem;
+.placeName{
+	font-size: 2rem;	
 }
 
-body{
-	background-color: #008E95;
-	color: white; 
+.placeName, .navbar *, .footer *, .badge.badge-pill{
+	font-family: Lobster;
+	font-weight: normal;
+}
+
+.navbar *, .footer *{
+	font-size: 2rem;	
+	color: white;
+}
+
+.stars{	
+	min-height: 100%;
+	font-size: 0.5rem;
+	padding-left: 1rem;
 }
 
 .navbar-red{
@@ -25,11 +41,46 @@ body{
 	color: white !important;
 }
 
-.badge{
-	padding: 0.5rem;	
+.badge.badge-pill{
+	padding: 0.5rem;
+	font-size: 1.2rem;	
 }
 
-.badge.badge-danger{
-	font-size: 1rem;
-	border-radius: 20px;
+.list-group{
+	padding: 10px;
+	background-color: rgba(255,255,255, 0.2);
+}
+
+.list-group-item{
+	background-color: #008F93;
+	color: white;
+}
+
+.list-group-item:hover{
+	background-color: #BA002D;
+	color: white;
+}
+
+.list-group-item:hover .badge.badge-pill{
+	color: #BA002D;
+	background-color: white;
+}
+
+p.lead{
+	text-align: justify;
+	font-weight: bold;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  min-height: 60px;  
+  background-color: #BA002D;
+  color: white;
+}
+
+.footer a:hover, .navbar a:hover{
+	text-decoration: none;
+	color: yellow !important;
 }
