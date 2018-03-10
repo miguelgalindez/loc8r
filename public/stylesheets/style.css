@@ -2,7 +2,7 @@ body{
 	font-family: Catamaran;
 	font-weight: bold;
 	background-color: #008E95;
-	color: white; 
+	color: white;	
 }
 
 span.badge.badge-facility{
@@ -28,8 +28,7 @@ span.badge.badge-facility{
 
 .stars{	
 	min-height: 100%;
-	font-size: 0.5rem;
-	padding-left: 1rem;
+	font-size: 0.5rem;	
 }
 
 .navbar-red{
@@ -71,16 +70,26 @@ p.lead{
 	font-weight: bold;
 }
 
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  min-height: 60px;  
-  background-color: #BA002D;
-  color: white;
-}
-
 .footer a:hover, .navbar a:hover{
 	text-decoration: none;
 	color: yellow !important;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+	position: absolute;
+	bottom: 0;
+	min-height: 60px;  
+	background-color: #BA002D;
+	color: white;
+	width: 100%;
 }
