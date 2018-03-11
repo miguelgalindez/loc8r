@@ -6,8 +6,14 @@ body{
 }
 
 span.badge.badge-facility{
-	margin-right: 5px;	
+	margin-right: 5px;
 }
+
+.card-body span.badge.badge-facility{
+	font-size: 1rem;
+	margin: 5px;
+}
+
 .first-description * {	
 	display: inline;	
 }
@@ -16,7 +22,7 @@ span.badge.badge-facility{
 	font-size: 2rem;	
 }
 
-.placeName, .navbar *, .footer *, .badge.badge-pill{
+.placeName, .navbar *, .footer *, .badge.badge-pill, .card-header{
 	font-family: Lobster;
 	font-weight: normal;
 }
@@ -26,9 +32,9 @@ span.badge.badge-facility{
 	color: white;
 }
 
-.stars{	
-	min-height: 100%;
-	font-size: 0.5rem;	
+.stars{		
+	font-size: 0.5rem;
+	margin-left: 0.5rem;
 }
 
 .navbar-red{
@@ -73,6 +79,36 @@ p.lead{
 .footer a:hover, .navbar a:hover{
 	text-decoration: none;
 	color: yellow !important;
+}
+
+.card-header{
+	background-color: #BA002D;	
+}
+
+.card{
+	background-color: transparent;
+	border-color: #BA002D;
+	border-width: 2px;	
+	margin-bottom: 1rem;
+}
+
+p:not(.direction){
+	line-height: 0.5cm;
+	text-align: justify;
+}
+
+.review p {
+	font-style: italic;
+	font-weight: normal;		
+}
+
+.card-body.opening-hours p{
+	margin-bottom: 0.1rem;
+}
+
+a.btn.btn-outline-light:hover, a.btn.btn-outline-light:active{
+	background-color: white;
+	color: #BA002D;
 }
 
 /* Sticky footer styles

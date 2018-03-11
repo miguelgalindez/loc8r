@@ -1,0 +1,76 @@
+extends layout
+block content
+	.row.text-center.no-gutters
+		.col-lg-12
+			.row.first-description.justify-content-center.align-content-center.no-gutters
+				span.placeName.mb-0 StarCups
+				.stars.text-warning.align-self-center
+					span.fa.fa-star.fa-2x
+					span.fa.fa-star.fa-2x
+					span.fa.fa-star.fa-2x
+					span.far.fa-star.fa-2x
+					span.far.fa-star.fa-2x
+			p.direction 125 High Street, Reading, RG6 1PS
+	.row.align-items-center
+		.col-xs-12.col-md-9
+			.row
+				#left-column.col-xs-12.col-sm-6
+					.card
+						h4.card-header Opening Hours
+						.card-body.opening-hours
+							p Monday - Friday: 7:00am - 7:00pm
+							p Saturday: 8:00am - 5:00pm
+							p Sunday: closed
+					.card
+						h4.card-header Facilities
+						.card-body
+							span.span.badge.badge-warning.badge-facility Hot drinks
+							span.span.badge.badge-warning.badge-facility Food
+							span.span.badge.badge-warning.badge-facility Premium Wifi
+				.col-xs-12.col-sm-6.location-map
+					.card
+						h4.card-header Location map
+						.card-body
+							img#map
+			.row.w-100.no-gutters
+				.col-12
+					.card.review-card
+						.card-header.d-flex.justify-content-between.align-items-center
+							h4 Customer Reviews
+							a.btn.btn-outline-light(href='/location/review/new') Add review
+						.card-body.review-container.pb-0
+							.row
+								.review.w-100.mx-3
+									.well.well-sm.review-header
+										.d-flex.justify-content-between
+											.row.firstDescription.no-gutters
+												span.reviewAuthor Simon Holmes
+												.stars.text-warning.align-self-center.rating
+													span.fa.fa-star.fa-2x
+													span.fa.fa-star.fa-2x
+													span.fa.fa-star.fa-2x
+													span.far.fa-star.fa-2x
+													span.far.fa-star.fa-2x
+											small.reviewTimestamp 16 July 2013
+									.col-xs-12
+										p What a great place. I can't say enough good things about.
+							.row
+								.review.w-100.mx-3
+									.well.well-sm.review-header
+										.d-flex.justify-content-between
+											.row.firstDescription.no-gutters
+												span.reviewAuthor Simon Holmes
+												.stars.text-warning.align-self-center.rating
+													span.fa.fa-star.fa-2x
+													span.fa.fa-star.fa-2x
+													span.fa.fa-star.fa-2x
+													span.far.fa-star.fa-2x
+													span.far.fa-star.fa-2x
+											small.reviewTimestamp 16 July 2013
+									.col-xs-12
+										p What a great place. I can't say enough good things about.
+		.col-xs-12.col-md-3.mt-3.mt-md-0
+			p.lead Simon's cafe is on Loc8r because it has accessible wifi and space to sit down with your laptop and get some work done.
+			p If you've been and you like it (or if you don't) please leave a review to help other people just like you.
+	script(src='/javascripts/jquery-3.3.1.min.js')
+	script(src='/javascripts/map-size-adjust.js')
