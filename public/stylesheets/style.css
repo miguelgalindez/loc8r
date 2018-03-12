@@ -32,6 +32,18 @@ span.badge.badge-facility{
 	color: white;
 }
 
+.breadcrumb{
+	background-color: rgba(255,255,255, 0.1);	
+}
+
+.breadcrumb-item span, .breadcrumb-item::before{
+	color: white !important; 
+}
+
+.breadcrumb a{
+	color: #BA002D;
+}
+
 .stars{		
 	font-size: 0.5rem;
 	margin-left: 0.5rem;
@@ -106,7 +118,7 @@ p:not(.direction){
 	margin-bottom: 0.1rem;
 }
 
-a.btn.btn-outline-light:hover, a.btn.btn-outline-light:active{
+.btn.btn-outline-light:hover, .btn.btn-outline-light:active{
 	background-color: white;
 	color: #BA002D;
 }

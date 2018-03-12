@@ -1,7 +1,7 @@
 extends layout
 block content
 	.row.text-center.no-gutters
-		.col-lg-12
+		.col-xs-12.col-lg-9
 			.row.first-description.justify-content-center.align-content-center.no-gutters
 				span.placeName.mb-0 StarCups
 				.stars.text-warning.align-self-center
@@ -10,8 +10,8 @@ block content
 					span.fa.fa-star.fa-2x
 					span.far.fa-star.fa-2x
 					span.far.fa-star.fa-2x
-			p.direction 125 High Street, Reading, RG6 1PS
-	.row.align-items-center
+			p.direction.border-bottom 125 High Street, Reading, RG6 1PS
+	.row.align-items-center.no-gutters
 		.col-xs-12.col-md-9
 			.row
 				#left-column.col-xs-12.col-sm-6
@@ -69,7 +69,7 @@ block content
 											small.reviewTimestamp 16 July 2013
 									.col-xs-12
 										p What a great place. I can't say enough good things about.
-		.col-xs-12.col-md-3.mt-3.mt-md-0
+		.col-xs-12.col-md-3.mt-3.pl-0.mt-md-0.pl-md-3
 			p.lead Simon's cafe is on Loc8r because it has accessible wifi and space to sit down with your laptop and get some work done.
 			p If you've been and you like it (or if you don't) please leave a review to help other people just like you.
 	script(src='/javascripts/jquery-3.3.1.min.js')

@@ -11,7 +11,13 @@ html
 	body
 		nav.navbar.sticky-top.navbar-red.justify-content-center
 			a.navbar-brand.py-0(href='/') Loc8r
-		.container
+		nav.my-0.py-0(aria-label='breadcrumb')
+			ol.breadcrumb.mb-0.py-1
+				li.breadcrumb-item
+					a(href='/') Home
+				li.breadcrumb-item.active 
+					span Current
+		.container.my-3
 			block content
 		footer.footer.text-center
 			.container
