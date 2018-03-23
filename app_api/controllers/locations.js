@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Loc = mongoose.model('Location');
+var theEarth = require('./earth');
 
 var sendJsonResponse = function(res, status, content) {
 	res.status(status);
@@ -13,7 +14,26 @@ module.exports.locationsCreate = function(req, res) {
 	sendJsonResponse(res, 200, "Success");
 };
 module.exports.locationsListByDistance=function(req, res){
-	sendJsonResponse(res, 200, "Success");
+	var lng = parseFloat(req.query.lng);
+	var lat = parseFloat(req.query.lat);
+	var maxDist = parseInt(req.query.maxDist);
+	if(lng && lat){
+		var options={
+			center: [lng, lat],
+			spherical: true
+		};
+
+		if(maxDist)
+			options.maxDistance=maxDist;	
+		Loc.find().where('coords').near(options).exec(function(err, doc){
+			if(err)
+				sendJsonResponse(res, 404, err);
+			else
+				sendJsonResponse(res, 200, doc);
+		});
+	}
+	else
+		sendJsonResponse(res, 404, 'You must provide the longitude (lng) and latitude (lat).');	
 };
 
 module.exports.locationsReadOne=function(req, res){
