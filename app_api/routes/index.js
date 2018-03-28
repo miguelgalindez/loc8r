@@ -9,6 +9,7 @@ router.get('/locations/:locationID', ctrlLocations.locationsReadOne);
 router.put('/locations/:locationID', ctrlLocations.locationsUpdateOne);
 router.delete('/locations/:locationID', ctrlLocations.locationsDeleteOne);
 
+router.get('/locations/:locationID/reviews', ctrlReviews.reviewsReadAll);
 router.post('/locations/:locationID/reviews', ctrlReviews.reviewsCreate);
 router.get('/locations/:locationID/reviews/:reviewID', ctrlReviews.reviewsReadOne);
 router.put('/locations/:locationID/reviews/:reviewID', ctrlReviews.reviewsUpdateOne);
