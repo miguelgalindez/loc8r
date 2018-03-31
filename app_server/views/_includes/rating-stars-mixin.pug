@@ -1,6 +1,7 @@
 mixin ratingStars(rating, n)
-	.stars.text-warning.align-self-center
-		-for(i=0; i<rating; i++)
-			span.fa.fa-star.fa-2x
-		-for(i=rating; i<n; i++)
-			span.far.fa-star.fa-2x
+	if(rating>=0 && n)
+		.stars.text-warning.align-self-center
+			-for(i=0; i<rating; i++)
+				span.fa.fa-star.fa-2x
+			-for(i=rating; i<n; i++)
+				span.far.fa-star.fa-2x

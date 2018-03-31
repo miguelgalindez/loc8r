@@ -38,7 +38,7 @@ block content
 							h4 Customer Reviews
 							a.btn.btn-outline-light(href='/location/review/new') Add review
 						.card-body.review-container.pb-0
-							if location.reviews.length
+							if location.reviews && location.reviews.length
 								each review in location.reviews
 									.row
 										.review.w-100.mx-3
@@ -57,15 +57,17 @@ block content
 	script(src='/javascripts/jquery-3.3.1.min.js')
 	script.
 		function initMap() {
-			var center=new google.maps.LatLng(#{location.coords.lat}, #{location.coords.lng});
-				var map = new google.maps.Map(document.getElementById('map'), {
-					zoom: 18,
-					center: center
-			});
-			var marker = new google.maps.Marker({
-				position: center,
-				map: map
-			});
+			if(#{location.coords.lat} && #{location.coords.lng}){
+				var center=new google.maps.LatLng(#{location.coords.lat}, #{location.coords.lng});
+					var map = new google.maps.Map(document.getElementById('map'), {
+						zoom: 18,
+						center: center
+				});
+				var marker = new google.maps.Marker({
+					position: center,
+					map: map
+				});
+			}
 		}
 	script(async, defer, src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFqFFFAx4KIHtvHSbow-rxavzTS1DDDzk&callback=initMap")
 	script(src='/javascripts/map-size-adjust.js')
