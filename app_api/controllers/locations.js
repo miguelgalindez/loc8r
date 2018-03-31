@@ -30,7 +30,7 @@ module.exports.locationsListByDistance = function(req, res) {
 	var limit=parseInt(req.query.limit);
 	if (lng && lat) {
 		var options = {
-			near: [lng, lat],
+			near: [lat, lng],
 			distanceField: 'dist.calculated',
 			spherical: true			
 		};
@@ -150,7 +150,8 @@ var setRequestDataIntoLocation = function(req, location, callback) {
 		location[key] = req.body[key] ? req.body[key] : location[key];
 
 	location.facilities = req.body.facilities ? req.body.facilities.replace(/\s{2,}/g, ' ').split(",").map(function(elem) {
-		return elem.trim();
+		var aux=elem.trim();
+		return aux.substring(0,1).toUpperCase()+aux.substring(1);
 	}) : location.facilities;	
 
 	location.coords = [parseFloat(req.body.lng), parseFloat(req.body.lat)];

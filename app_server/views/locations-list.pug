@@ -1,6 +1,8 @@
 extends layout
 
 block content
+	include _includes/rating-stars-mixin
+	include _includes/facilities-mixin
 	.row.pt-3.align-items-center
 		.col-xs-12.col-sm-8
 			if message
@@ -8,19 +10,14 @@ block content
 			if locations.length
 				.list-group
 					each location in locations
-						a.list-group-item.list-group-item-action.flex-column.align-items-start(href='/location')
+						a.list-group-item.list-group-item-action.flex-column.align-items-start(href='/location/'+location._id)
 							.d-flex.w-100.justify-content-between.align-items-center.first-description
 								.row.d-flex.align-items-center.no-gutters
 									span.placeName= location.name
-									.stars.text-warning
-										-for (var i=1; i<=location.rating;i++)
-											span.fa.fa-star.fa-2x
-										-for(i=location.rating; i<5; i++)
-											span.far.fa-star.fa-2x
+									+ratingStars(location.rating, 5)
 								span.badge.badge-pill.badge-danger= location.distance+" km"
 							p.mb-1.address= location.address
 							p.mb-1
-								each facility in location.facilities
-									span.span.badge.badge-warning.badge-facility= facility
+								+facilities(location.facilities)
 		.col-xs-12.col-sm-4.mt-4.mt-sm-0
 			p.lead Looking for wifi and a seat? Loc8r helps you find places to work when out and about. Perhaps with coffee, cake or a pint? Let Loc8r help you find the place you're looking for.

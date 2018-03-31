@@ -1,16 +1,14 @@
 extends layout
 block content
+	include _includes/format-date-mixin
+	include _includes/rating-stars-mixin
+	include _includes/facilities-mixin
 	.row.text-center.no-gutters
 		.col-xs-12.col-lg-9
 			.row.first-description.justify-content-center.align-content-center.no-gutters
-				span.placeName.mb-0 StarCups
-				.stars.text-warning.align-self-center
-					span.fa.fa-star.fa-2x
-					span.fa.fa-star.fa-2x
-					span.fa.fa-star.fa-2x
-					span.far.fa-star.fa-2x
-					span.far.fa-star.fa-2x
-			p.direction.border-bottom 125 High Street, Reading, RG6 1PS
+				span.placeName.mb-0=location.name
+				+ratingStars(location.rating, 5)
+			p.direction.border-bottom=location.address
 	.row.align-items-center.no-gutters
 		.col-xs-12.col-md-9
 			.row
@@ -18,20 +16,21 @@ block content
 					.card
 						h4.card-header Opening Hours
 						.card-body.opening-hours
-							p Monday - Friday: 7:00am - 7:00pm
-							p Saturday: 8:00am - 5:00pm
-							p Sunday: closed
+							if location.openingTimes.length
+								each openingTime in location.openingTimes
+									if openingTime.closed
+										p #{openingTime.days}: Closed
+									else
+										p #{openingTime.days}: #{openingTime.opening} - #{openingTime.closing}
 					.card
 						h4.card-header Facilities
 						.card-body
-							span.span.badge.badge-warning.badge-facility Hot drinks
-							span.span.badge.badge-warning.badge-facility Food
-							span.span.badge.badge-warning.badge-facility Premium Wifi
+							+facilities(location.facilities)
 				.col-xs-12.col-sm-6.location-map
 					.card
 						h4.card-header Location map
 						.card-body
-							img#map
+							#map
 			.row.w-100.no-gutters
 				.col-12
 					.card.review-card
@@ -39,38 +38,34 @@ block content
 							h4 Customer Reviews
 							a.btn.btn-outline-light(href='/location/review/new') Add review
 						.card-body.review-container.pb-0
-							.row
-								.review.w-100.mx-3
-									.well.well-sm.review-header
-										.d-flex.justify-content-between
-											.row.firstDescription.no-gutters
-												span.reviewAuthor Simon Holmes
-												.stars.text-warning.align-self-center.rating
-													span.fa.fa-star.fa-2x
-													span.fa.fa-star.fa-2x
-													span.fa.fa-star.fa-2x
-													span.far.fa-star.fa-2x
-													span.far.fa-star.fa-2x
-											small.reviewTimestamp 16 July 2013
-									.col-xs-12
-										p What a great place. I can't say enough good things about.
-							.row
-								.review.w-100.mx-3
-									.well.well-sm.review-header
-										.d-flex.justify-content-between
-											.row.firstDescription.no-gutters
-												span.reviewAuthor Simon Holmes
-												.stars.text-warning.align-self-center.rating
-													span.fa.fa-star.fa-2x
-													span.fa.fa-star.fa-2x
-													span.fa.fa-star.fa-2x
-													span.far.fa-star.fa-2x
-													span.far.fa-star.fa-2x
-											small.reviewTimestamp 16 July 2013
-									.col-xs-12
-										p What a great place. I can't say enough good things about.
+							if location.reviews.length
+								each review in location.reviews
+									.row
+										.review.w-100.mx-3
+											.well.well-sm.review-header
+												.d-flex.justify-content-between
+													.row.firstDescription.no-gutters
+														span.reviewAuthor=review.author
+														+ratingStars(review.rating, 5)
+													small.reviewTimestamp
+														+formatDate(review.createdOn)
+											.col-xs-12
+												p=review.reviewText
 		.col-xs-12.col-md-3.mt-3.pl-0.mt-md-0.pl-md-3
 			p.lead Simon's cafe is on Loc8r because it has accessible wifi and space to sit down with your laptop and get some work done.
 			p If you've been and you like it (or if you don't) please leave a review to help other people just like you.
 	script(src='/javascripts/jquery-3.3.1.min.js')
+	script.
+		function initMap() {
+			var center=new google.maps.LatLng(#{location.coords.lat}, #{location.coords.lng});
+				var map = new google.maps.Map(document.getElementById('map'), {
+					zoom: 18,
+					center: center
+			});
+			var marker = new google.maps.Marker({
+				position: center,
+				map: map
+			});
+		}
+	script(async, defer, src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFqFFFAx4KIHtvHSbow-rxavzTS1DDDzk&callback=initMap")
 	script(src='/javascripts/map-size-adjust.js')

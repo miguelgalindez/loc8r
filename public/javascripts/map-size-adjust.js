@@ -15,7 +15,7 @@ function adjustMapSize() {
 	mapHeight = mapHeight < 0 ? mapHeight * -1 : mapHeight;
 	var aproxHeight = parseInt(mapHeight);	
 	var mapWidth = mapContainer[0].clientWidth - (mapContainerPadding * 2);
-	mapWidth = mapWidth < 0 ? mapWidth * -1 : mapWidth;
+	mapWidth = mapWidth < 0 ? mapWidth * -1 : mapWidth;	
+	$("#map").css({height: aproxHeight, width: mapWidth});	
 	mapContainer.css('padding-bottom', mapContainerPadding + (mapHeight - aproxHeight));
-	$("#map").attr('src', 'http://maps.googleapis.com/maps/api/staticmap?center=51.455041,-0.9690884&zoom=17&size=' + mapWidth + 'x' + aproxHeight + '&sensor=false&markers=51.455041,-0.9690884');
 }
