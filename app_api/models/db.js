@@ -1,22 +1,23 @@
 var mongoose = require('mongoose');
 var dbURI=process.env.NODE_DB;
+
 if(!dbURI)
 	dbURI='mongodb://localhost/loc8r';
-mongoose.connect(dbURI);
 
-/*
-var dbURIlog = 'mongodb://localhost/Loc8rLog';
-var logDB = mongoose.createConnection(dbURIlog);
-logDB.on('connected', function () {
-	console.log('Mongoose connected to ' + dbURIlog);
-});
-logDB.close(function () {
-	console.log('Mongoose log disconnected');
-});
-*/
+var options={
+	reconnectTries: Number.MAX_VALUE,
+	reconnectInterval: 3000
+}
+
+mongoose.connect(dbURI, options);
+
 
 mongoose.connection.on('connected', function() {
 	console.log('Mongoose conected to: ' + dbURI);
+});
+
+mongoose.connection.on('reconnected', function () {
+    console.log('MongoDB reconnected!');
 });
 
 mongoose.connection.on('error', function(err) {

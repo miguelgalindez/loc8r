@@ -54,7 +54,7 @@ function processLocationsListByDistance(res, docs) {
 	var locations = [];
 	docs.forEach(function(location) {
 		locations.push({
-			distance: theEarth.getDistanceFromRads(location.dist.calculated),
+			distance: theEarth.getDistanceFromRads(location.dist.calculated).toFixed(1),
 			name: location.name,
 			address: location.address,
 			rating: location.rating,
@@ -106,7 +106,18 @@ module.exports.locationsUpdateOne = function(req, res) {
 
 
 module.exports.locationsDeleteOne = function(req, res) {
-	sendJsonResponse(res, 200, "Success");
+	var locationID=req.params.locationID;
+	if(locationID){
+		Loc.findByIdAndRemove(locationID).exec(function(err, location){
+			if(err){
+				sendJsonResponse(res, 400, err);
+				return;
+			}
+			sendJsonResponse(res, 204, null);
+		});
+	}
+	else
+		sendJsonResponse(res, 400, "You must specify the location ID");
 };
 
 

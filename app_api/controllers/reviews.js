@@ -133,7 +133,35 @@ module.exports.reviewsUpdateOne = function(req, res) {
 };
 
 module.exports.reviewsDeleteOne = function(req, res) {
-	sendJsonResponse(res, 200, "Success");
+	var locationID=req.params.locationID;
+	var reviewID=req.params.reviewID;
+	if(locationID && reviewID){
+		Loc.findById(locationID).select("reviews").exec(function(err, location){
+			if(err)
+				sendJsonResponse(res, 400, err);
+			else if(!location)
+				sendJsonResponse(res, 404, "Location not found");
+			else{
+				var review=location.reviews.id(reviewID);
+				if(review){
+					review.remove();
+					location.save(function(err, location){
+						if(err)
+							sendJsonResponse(res, 400, err);
+						else{							
+							sendJsonResponse(res, 204, null);
+							ctrlLocations.udpateAverageRating(location._id);
+						}
+					});
+				}
+				else
+					sendJsonResponse(res, 404, "Review not found");
+			}
+
+		});
+	}
+	else
+		sendJsonResponse(res, 400, "You must specify both the location ID and review ID");
 };
 
 var setRequestDataIntoReview = function(req, review, callback) {
