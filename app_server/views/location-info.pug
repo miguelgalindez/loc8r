@@ -36,7 +36,7 @@ block content
 					.card.review-card
 						.card-header.d-flex.justify-content-between.align-items-center
 							h4 Customer Reviews
-							a.btn.btn-outline-light(href='/location/review/new') Add review
+							a.btn.btn-outline-light(href='/location/'+location._id+'/reviews/new') Add review
 						.card-body.review-container.pb-0
 							if location.reviews && location.reviews.length
 								each review in location.reviews

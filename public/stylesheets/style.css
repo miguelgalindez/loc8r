@@ -123,6 +123,10 @@ p:not(.direction){
 	color: #BA002D;
 }
 
+button{
+	font-family: Lobster !important;
+}
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {

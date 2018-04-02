@@ -38,6 +38,16 @@ var renderDetailPage = function(req, res, details) {
 	});
 };
 
+module.exports.renderAddReviewPage = function(req, res){
+	getLocationInfo(req, res, function(req, res, body){
+		res.render('location-review-form', {
+			title: 'Add Review',
+			pageHeader: { title: 'Review' },
+			location: body
+		});
+	});	
+};
+
 module.exports.homeList = function(req, res) {
 	var requestOptions = {
 		url: apiOptions.server + '/api/locations',
@@ -54,7 +64,7 @@ module.exports.homeList = function(req, res) {
 	});
 };
 
-module.exports.locationInfo = function(req, res) {
+var getLocationInfo = function(req, res, callback) {
 	var locationID = req.params.locationID;
 	if (locationID) {
 		var requestOptions = {
@@ -69,19 +79,38 @@ module.exports.locationInfo = function(req, res) {
 					lng: coords[0].toFixed(6),
 					lat: coords[1].toFixed(6)
 				};				
-				renderDetailPage(req, res, body);
+				callback(req, res, body);
 			}
 			else
 				renderError(req, res, response.statusCode);
 		});
-
 	}
 };
 
-module.exports.addReview = function(req, res) {
-	res.render('location-review-form', {
-		title: 'Add Review'
-	});
+module.exports.locationInfo = function(req, res){
+	getLocationInfo(req, res, renderDetailPage);
+};
+
+module.exports.addReview = function(req, res) {	
+	var locationID=req.params.locationID;	
+	if(locationID){
+		var requestOptions={
+			url: apiOptions.server+'/api/locations/'+locationID+'/reviews',
+			method: 'POST',
+			json: {
+				author: req.body.author,
+				rating: parseInt(req.body.rating, 10),
+				reviewText: req.body.reviewText
+			}
+		};
+		request(requestOptions, function(err, response, body){
+			if(response.statusCode==201){
+				res.redirect('/location/'+locationID);
+			}
+			else
+				renderError(req, res, response.statusCode);
+		});
+	}
 };
 
 var renderError = function(req, res, status) {
